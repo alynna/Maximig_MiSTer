@@ -6,12 +6,30 @@ I am going to need to remove the 68020 CPU logic and replace it with the 68040 l
 The immediate goals of this core are to expand the logic of the MiniMig AGA Mister core to include the following features:
 * Of course, the 68040 CPU.  Based on the performance of the Mac Quadra 800 core i've been evaluating, I expect to be able to run the 68040 CPU stably at 56mhz.  This value is chosen *because* it will be driven at chipset speed times 8x.
 * The second SD card slot should be mapped to a selectable IDE port.   When the second SD slot is mapped, the option to map a disk image will disappear and the core will drive the second SD card slot directly.   It will be driven at 56mhz, and should achieve an IDE speed of ~8mb/s
-* * The second SD card slot then can be used as a native hard disk, can be partitioned in hdtoolbox, can be booted from, and can use filesystems such as SFS and PFS3.
+  * The second SD card slot then can be used as a native hard disk, can be partitioned in hdtoolbox, can be booted from, and can use filesystems such as SFS and PFS3.
 * 8mb chip RAM.   This is relatively simple and only involves creating and routing 2 more address lines between the chipset and the SDRAM.  This has been demonstrated on other hardware (such as vampire hw) multiple times and emulation and is definitely doable.
 
 Other goals may be added to this once these goals are met. 
 I will not be using AI tools to do this, I will do it the way I've always done it lol.
 --Alynna
+
+## Notes on configuration
+* Lowest hanging fruit: 8mb chip RAM
+  * Add 2 address lines to the chipset going to the SDRAM.
+  * Only 2 chipset selection options: 2MB/8MB.  We're not going to pretend that this is going to be a lower end Amiga.
+  * From oscomp.hu, A4000 spec also had a possibility of fast RAM at 01000000-017FFFFF.  The 56mb after that is marked unused.
+    * Because of this, I may map additional SDRAM here and have a selector for 2MB/8MB/16MB.
+    * It is POSSIBLE to go all the way to 72mb CHIP RAM here and still be in A4000 spec.  Will think about it.
+    * Will require SDRAM detection logic.
+* Fast RAM selection: Remove
+  * Fast RAM will be in a fixed location, 384mb FAST RAM will always be available.
+  * In the official memory map, 08000000-0FFFFFFFF (128m) is "CPU socket 32 bit FAST ram expansion".  Place 128mb DDR3 HPS RAM here.
+  * In the official memory map, 10000000-7FFFFFFFF (1792m) is "Zorro 3 expansion board area".
+    * Place a Zorro3 expansion board (256mb DDR3 HPS RAM) from 10000000-1FFFFFFF.
+* CPU selection is going away, fx68k and tg68k code will be removed.  Saves lots of LEs, and makes 68040 core "not a problem" to implement.
+  * All wires will go to the 68040 without selkection logic.
+  * CPU MAY be selectable between 68040 (28mhz) and 68040 (56mhz) if the lower speed won't break anything.
+
 
 ## This information below is to preserve the information on the original Minimig-AGA_MiSTer core.   I am expecting some features to be backported.
 This is a port of the minimig core to the [MiSTer board](https://github.com/MiSTer-devel).
