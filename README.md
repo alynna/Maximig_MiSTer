@@ -17,7 +17,7 @@ I will not be using AI tools to do this, I will do it the way I've always done i
 * Lowest hanging fruit: 8mb chip RAM
   * Add 2 address lines to the chipset going to the SDRAM.
   * Only 2 chipset selection options: 2MB/8MB.  We're not going to pretend that this is going to be a lower end Amiga.
-  * From oscomp.hu, A4000 spec also had a possibility of fast RAM at 01000000-017FFFFF.  The 56mb after that is marked unused.
+  * From oscomp.hu, A4000 spec also had a possibility of chip RAM expansion at 01000000-017FFFFF.  The 56mb after that is marked "unused".
     * Because of this, I may map additional SDRAM here and have a selector for 2MB/8MB/16MB.
     * It is POSSIBLE to go all the way to 72mb CHIP RAM here and still be in A4000 spec.  Will think about it.
     * Will require SDRAM detection logic.
