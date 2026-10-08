@@ -4,7 +4,7 @@ I am forking this to a new core only because I expect that there will not be eno
 I am going to need to remove the 68020 CPU logic and replace it with the 68040 logic which will not be able to be reintegrated with mainline.
 
 The immediate goals of this core are to expand the logic of the MiniMig AGA Mister core to include the following features:
-* Of course, the 68040 CPU.  Based on the performance of the Mac Quadra 800 core i've been evaluating, I expect to be able to run the 68040 CPU stably at 56mhz.  This value is chosen *because* it will be driven at chipset speed times 8x
+* Of course, the 68040 CPU.  Based on the performance of the Mac Quadra 800 core i've been evaluating, I expect to be able to run the 68040 CPU stably at 56mhz.  This value is chosen *because* it will be driven at chipset speed times 8x.
 * The second SD card slot should be mapped to a selectable IDE port.   When the second SD slot is mapped, the option to map a disk image will disappear and the core will drive the second SD card slot directly.   It will be driven at 56mhz, and should achieve an IDE speed of ~8mb/s
 * * The second SD card slot then can be used as a native hard disk, can be partitioned in hdtoolbox, can be booted from, and can use filesystems such as SFS and PFS3.
 * 8mb chip RAM.   This is relatively simple and only involves creating and routing 2 more address lines between the chipset and the SDRAM.  This has been demonstrated on other hardware (such as vampire hw) multiple times and emulation and is definitely doable.
