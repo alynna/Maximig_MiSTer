@@ -9,7 +9,9 @@ The immediate goals of this core are to expand the logic of the MiniMig AGA Mist
 * * The second SD card slot then can be used as a native hard disk, can be partitioned in hdtoolbox, can be booted from, and can use filesystems such as SFS and PFS3.
 * 8mb chip RAM.   This is relatively simple and only involves creating and routing 2 more address lines between the chipset and the SDRAM.  This has been demonstrated on other hardware (such as vampire hw) multiple times and emulation and is definitely doable.
 
-Other goals may be added to this once these goals are met.   T
+Other goals may be added to this once these goals are met. 
+I will not be using AI tools to do this, I will do it the way I've always done it lol.
+--Alynna
 
 ## This information below is to preserve the information on the original Minimig-AGA_MiSTer core.   I am expecting some features to be backported.
 This is a port of the minimig core to the [MiSTer board](https://github.com/MiSTer-devel).
