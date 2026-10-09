@@ -30,6 +30,10 @@ I will not be using AI tools to do this, I will do it the way I've always done i
   * All wires will go to the 68040 without selkection logic.
   * CPU MAY be selectable between 68040 (28mhz) and 68040 (56mhz) if the lower speed won't break anything.
 
+### Secondary goals
+* 1.76mb Amiga floppy image support
+  * The Amiga achieves HD floppy support by lowering the rotation speed of the floppy to 250rpm.  This allows the CIA to read twice the data at the same speed.
+
 
 ## This information below is to preserve the information on the original Minimig-AGA_MiSTer core.   I am expecting some features to be backported.
 This is a port of the minimig core to the [MiSTer board](https://github.com/MiSTer-devel).
